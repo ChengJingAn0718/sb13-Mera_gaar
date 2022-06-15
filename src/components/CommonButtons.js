@@ -1,7 +1,7 @@
 
 import React, { useRef, useState } from "react";
 import "../stylesheets/styles.css";
-import { prePathUrl } from "./CommonFunctions";
+import { prePathUrl, setExtraVolume } from "./CommonFunctions";
 
 var isFullScreen = false;
 var elem = document.documentElement;
@@ -70,6 +70,7 @@ const MusicButton = React.forwardRef((prop, ref) => {
         if (_isBackSoundPlaying) {
             _setBackgroundPlaying(false);
             prop.backAudio.pause();
+            setExtraVolume(prop.backAudio, 1.5)
         }
         else {
             _setBackgroundPlaying(true);

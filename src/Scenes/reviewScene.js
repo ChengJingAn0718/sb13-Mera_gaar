@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useContext, useState } from 'react';
 import "../stylesheets/styles.css";
 import BaseImage from '../components/BaseImage';
 import { UserContext } from '../components/BaseShot';
-import { prePathUrl, getAudioPath, setRepeatType, setRepeatAudio, startRepeatAudio, stopRepeatAudio } from "../components/CommonFunctions";
+import { prePathUrl, getAudioPath, setRepeatType, setRepeatAudio, startRepeatAudio, stopRepeatAudio, setExtraVolume } from "../components/CommonFunctions";
 import { textInfoList, iconList, gapList } from "../components/CommonVarariant"
 
 
@@ -85,9 +85,13 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo }, ref) => {
         sceneStart: () => {
             baseObject.current.className = 'aniObject'
 
+            setExtraVolume(audioList.commonAudio3, 2)
+            for (let i = 0; i < 17; i++)
+                setExtraVolume(audioList[i], 2)
+                
+
 
             timerList[0] = setTimeout(activeBtnFunc, 1500);
-
             setRepeatType(2)
 
             audioList.bodyAudio1.src = prePathUrl() + "sounds/main/common/review0.mp3"

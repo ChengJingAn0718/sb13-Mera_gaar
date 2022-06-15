@@ -42,6 +42,9 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo, loadFunc }, ref) => 
 
         setRepeatType(1)
 
+        setExtraVolume(audioList.commonAudio2, 1.5)
+        setExtraVolume(audioList.commonAudio1, 1.5)
+
         return () => {
             stepCount = 0;
             totalStep = 0

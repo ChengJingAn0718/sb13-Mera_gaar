@@ -2,12 +2,12 @@ import React, { useEffect, useRef, useContext, useState } from 'react';
 import "../stylesheets/styles.css";
 import BaseImage from '../components/BaseImage';
 import { UserContext } from '../components/BaseShot';
-import { getAudioPath, prePathUrl } from "../components/CommonFunctions";
+import { getAudioPath, prePathUrl, setExtraVolume } from "../components/CommonFunctions";
 import { MaskComponent } from "../components/CommonComponents"
 
 
 const maskPathList = [
-    ['1'],
+    ['empty'],
     ['2'],
     ['3'],
     ['4'],
@@ -21,6 +21,7 @@ const maskPathList = [
 
 const maskTransformList = [
     { x: 0.0, y: 0.0, s: 1 },
+
     { x: 0.4, y: 0.2, s: 2.4 },
     { x: 0.7, y: 0.2, s: 2.4 },
     { x: 0.5, y: -0.1, s: 2.2 },
@@ -38,7 +39,7 @@ let subMaskNum = 0;
 
 // plus values..
 const marginPosList = [
-    { s: 2, l: 0.0, t: 0.0 },
+    { s: 0, l: 0.0, t: 0.0 },
     { s: 2, l: 0.3, t: 0.3 },
     { s: 2, l: 0.6, t: 0.0 },
     { s: 2, l: 0.6, t: 0.0 },
@@ -108,6 +109,10 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, bgLoaded }, ref)
         sceneStart: () => {
 
             loadFunc()
+
+            setExtraVolume(audioList.bodyAudio1, 2)
+            setExtraVolume(audioList.bodyAudio2, 2)
+            setExtraVolume(audioList.bodyAudio3, 2)
 
             baseObject.current.className = 'aniObject'
 

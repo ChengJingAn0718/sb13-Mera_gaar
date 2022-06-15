@@ -342,10 +342,10 @@ const OptionScene = React.forwardRef(({ nextFunc, transSignaler, _geo, continueS
                     >
 
                         <BaseImage
-                            scale={0.22}
+                            scale={0.28}
                             posInfo={{
-                                l: (posInfoList[index].x - 3) / 100,
-                                b: 0.05
+                                l: (posInfoList[index].x - 5.5) / 100,
+                                b: 0.077
                             }}
                             ref={textRefList[index]}
                             url={"option/" + value.f + "/" + value.wN + "a.png"}
