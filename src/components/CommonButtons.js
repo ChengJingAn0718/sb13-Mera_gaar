@@ -70,7 +70,7 @@ const MusicButton = React.forwardRef((prop, ref) => {
         if (_isBackSoundPlaying) {
             _setBackgroundPlaying(false);
             prop.backAudio.pause();
-            setExtraVolume(prop.backAudio, 1.5)
+            setExtraVolume(prop.backAudio, 2)
         }
         else {
             _setBackgroundPlaying(true);
