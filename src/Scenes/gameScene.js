@@ -56,9 +56,9 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo, loadFunc }, ref) => 
             setSceneLoad(true)
         },
         sceneStart: () => {
-            
-            setExtraVolume(audioList.commonAudio2, 4)
-            setExtraVolume(audioList.commonAudio1, 4)
+
+            setExtraVolume(audioList.commonAudio2, 5)
+            setExtraVolume(audioList.commonAudio1, 5)
 
             parentRef.current.className = 'aniObject'
             startFirstPart()
@@ -91,13 +91,13 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo, loadFunc }, ref) => 
 
     const showControlFunc = () => {
 
-        blackWhiteObject.current.style.WebkitMaskImage = 'url("' + prePathUrl() + 'images/question/' + (stepCount + 2) + '/m.png")'
-
-        if (stepCount < questionPartCount - 1)
+        if (stepCount < questionPartCount - 1) {
+            blackWhiteObject.current.style.WebkitMaskImage = 'url("' + prePathUrl() + 'images/question/' + (stepCount + 2) + '/m.png")'
             aniImageList.map((image, index) => {
                 if (index < 3)
                     image.current.setUrl('question/' + (stepCount + 2) + '/' + (index + 1) + '.png')
             })
+        }
 
 
         timerList[2] = setTimeout(() => {
@@ -327,11 +327,11 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo, loadFunc }, ref) => 
                                         , cursor: "pointer",
                                     }}>
                                     <BaseImage
-                                        url={'Icon/grey_progress.png'}
+                                        url={'icon/grey_progress.png'}
                                     />
                                     <BaseImage
                                         ref={starRefs[5 - value]}
-                                        url={'Icon/progress.png'}
+                                        url={'icon/progress.png'}
                                         className='hideObject'
                                     />
                                 </div>)
@@ -426,7 +426,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo, loadFunc }, ref) => 
                                             top: '-32%'
                                         }}
                                         draggable={false}
-                                        src={prePathUrl() + 'images/Buttons/Answer_Button.svg'}
+                                        src={prePathUrl() + 'images/buttons/answer_button.svg'}
                                     />
                                 </div>
                             </div>

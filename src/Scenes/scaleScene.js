@@ -7,7 +7,6 @@ import { MaskComponent } from "../components/CommonComponents"
 
 
 const maskPathList = [
-    ['empty'],
     ['2'],
     ['3'],
     ['4'],
@@ -20,8 +19,6 @@ const maskPathList = [
 
 
 const maskTransformList = [
-    { x: 0.0, y: 0.0, s: 1 },
-
     { x: 0.4, y: 0.2, s: 2.4 },
     { x: 0.7, y: 0.2, s: 2.4 },
     { x: 0.5, y: -0.1, s: 2.2 },
@@ -39,7 +36,6 @@ let subMaskNum = 0;
 
 // plus values..
 const marginPosList = [
-    { s: 0, l: 0.0, t: 0.0 },
     { s: 2, l: 0.3, t: 0.3 },
     { s: 2, l: 0.6, t: 0.0 },
     { s: 2, l: 0.6, t: 0.0 },
@@ -51,7 +47,6 @@ const marginPosList = [
 ]
 
 const audioPathList = [
-    ['3'],
     ['4'],
     ['5'],
     ['6'],
@@ -110,17 +105,18 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, bgLoaded }, ref)
 
             loadFunc()
 
-            setExtraVolume(audioList.bodyAudio1, 5)
-            setExtraVolume(audioList.bodyAudio2, 5)
-            setExtraVolume(audioList.bodyAudio3, 5)
+            setExtraVolume(audioList.bodyAudio1, 6)
+            setExtraVolume(audioList.bodyAudio2, 6)
+            setExtraVolume(audioList.bodyAudio3, 6)
 
             baseObject.current.className = 'aniObject'
 
-            audioList.bodyAudio1.src = getAudioPath('intro/2');
-            audioList.bodyAudio2.src = getAudioPath('intro/1');
+            audioList.bodyAudio1.src = getAudioPath('intro/4');
+            audioList.bodyAudio2.src = getAudioPath('intro/2');
+            audioList.bodyAudio3.src = getAudioPath('intro/3');
 
             blackWhiteObject.current.style.WebkitMaskImage = 'url("' +
-                returnImgPath(maskPathList[currentMaskNum][0], true) + '")'
+                returnImgPath(maskPathList[0][0], true) + '")'
 
             blackWhiteObject.current.style.transition = "0.5s"
             currentImage.current.style.transition = '0.5s'
@@ -128,9 +124,16 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, bgLoaded }, ref)
 
             setTimeout(() => {
                 audioList.bodyAudio2.play()
+
                 setTimeout(() => {
-                    showIndividualImage()
-                }, audioList.bodyAudio2.duration * 1000 + 1000);
+
+                    audioList.bodyAudio3.play()
+
+                    setTimeout(() => {
+                        showIndividualImage()
+                    }, audioList.bodyAudio3.duration * 1000 + 1000);
+
+                }, audioList.bodyAudio2.duration * 1000 + 2000);
             }, 3000);
         },
         sceneEnd: () => {
@@ -151,7 +154,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, bgLoaded }, ref)
     ]
     function showIndividualImage() {
         blackWhiteObject.current.className = 'hideObject'
-        let currentMaskName = maskPathList[currentMaskNum]
+        let currentMaskName = maskPathList[currentMaskNum][0]
 
         baseObject.current.style.transition = durationList[currentMaskNum] + 's'
 
@@ -279,7 +282,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, bgLoaded }, ref)
 
                                 currentMaskNum++;
 
-                                currentMaskName = maskPathList[currentMaskNum]
+                                currentMaskName = maskPathList[currentMaskNum][0]
                                 if (currentMaskName != 'sub')
                                     blackWhiteObject.current.style.WebkitMaskImage = 'url("' +
                                         returnImgPath(maskPathList[currentMaskNum], true) + '")'
@@ -343,7 +346,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, bgLoaded }, ref)
                             left: '0%',
                             top: '0%',
                             WebkitMaskImage: 'url("' +
-                                returnImgPath(maskPathList[2][0], true)
+                                returnImgPath(maskPathList[0][0], true)
                                 + '")',
                             WebkitMaskSize: '100% 100%',
                             WebkitMaskRepeat: "no-repeat"
@@ -362,17 +365,6 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, bgLoaded }, ref)
                             <BaseImage
                                 url={'bg/base.png'}
                             />
-
-                            {/* {
-                        outLineRefList.map(
-                            (value, index) =>
-                                <BaseImage
-                                    className='hideObject'
-                                    ref={outLineRefList[index]}
-                                />
-                        )
-
-                    } */}
 
                         </div>
                     </div>

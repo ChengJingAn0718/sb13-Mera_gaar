@@ -85,10 +85,9 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo }, ref) => {
         sceneStart: () => {
             baseObject.current.className = 'aniObject'
 
-            setExtraVolume(audioList.commonAudio3, 5)
-            for (let i = 0; i < 17; i++)
-                setExtraVolume(audioList[i], 5)
-                
+            setExtraVolume(audioList.commonAudio3, 6)
+
+
 
 
             timerList[0] = setTimeout(activeBtnFunc, 1500);
@@ -115,19 +114,18 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo }, ref) => {
             timerList[6] = setTimeout(() => {
                 audioList.bodyAudio1.play();
 
-                // timerList[7] = setTimeout(() => {
-                //     audioList.bodyAudio2.play();
+
 
                 timerList[8] = setTimeout(() => {
                     audioList.commonAudio3.play()
                     startRepeatAudio()
 
-                    // }, audioList.bodyAudio2.duration * 1000 + 300);
+
                 }, audioList.bodyAudio1.duration * 1000 + 1000);
 
             }, 1500);
 
-            // baseObject.current.className = 'aniObject'
+
         }
     }
 
@@ -208,8 +206,11 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo }, ref) => {
         }, 150);
 
         clickedList.push(index)
+        setExtraVolume(audioList[index], 6)
+        setTimeout(() => {
+            audioList[index].play();
+        }, 50);
 
-        audioList[index].play();
         if (clickedList.length == doneCount + wordGround[stepCount]) {
             setTimeout(() => {
                 if (stepCount != wordGround.length - 1)
