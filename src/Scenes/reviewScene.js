@@ -21,11 +21,11 @@ let clickedList = []
 let wordGround = [6, 5, 6]
 
 const posInfoList = [
-    { x: 2, y: 40 },
-    { x: 33, y: 40 },
+    { x: 4, y: 40 },
+    { x: 34, y: 40 },
     { x: 64, y: 40, m: true },
-    { x: 2, y: 70 },
-    { x: 33, y: 70 },
+    { x: 4, y: 70 },
+    { x: 34, y: 70 },
     { x: 64, y: 70, m: true },
 
 
@@ -35,11 +35,11 @@ const posInfoList = [
     { x: 33, y: 70 },
     { x: 64, y: 70, m: true },
 
-    { x: 2, y: 40 },
-    { x: 33, y: 40 },
+    { x: 4, y: 40 },
+    { x: 34, y: 40 },
     { x: 64, y: 40, m: true },
-    { x: 2, y: 70 },
-    { x: 33, y: 70 },
+    { x: 4, y: 70 },
+    { x: 34, y: 70 },
     { x: 64, y: 70, m: true },
 ]
 
